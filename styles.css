@@ -12,6 +12,7 @@ header {
     z-index: 100;
 }
 
+/* Sale Banner */
 .sale-banner {
     background-color: #333;
     color: #fff;
@@ -21,31 +22,26 @@ header {
     font-family: 'Neutra Text', sans-serif;
 }
 
+/* Navbar Styles */
 .navbar {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 20px 20px 30px;
+    justify-content: space-between;
+    padding: 20px;
     background-color: #fff;
     position: relative;
 }
 
 .logo {
     height: 40px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0 20px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
     gap: 20px;
-    position: absolute;
-    left: 0;
-    margin-left: 20px;
-    padding: 0 20px;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-links li a {
@@ -59,10 +55,6 @@ header {
 .user-options {
     display: flex;
     gap: 8px;
-    position: absolute;
-    right: 0;
-    margin-right: 20px;
-    padding: 0 20px;
 }
 
 .user-options img {
@@ -162,7 +154,7 @@ header {
 .carousel-container {
     padding: 20px;
     background-color: #f9f9f9;
-    position: relative; /* Ensure that the sort button is positioned correctly */
+    position: relative;
 }
 
 .carousel-container h2 {
@@ -184,7 +176,7 @@ header {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    z-index: 10; /* Ensure it sits above other elements */
+    z-index: 10;
 }
 
 #sort-button:hover {
@@ -194,16 +186,16 @@ header {
 /* Image Styling */
 .photo-img {
     width: 100%;
-    height: 200px; /* Set a fixed height for images */
-    object-fit: cover; /* Ensure images cover the area */
-    border-radius: 8px; /* Add rounded corners */
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
 }
 
 .photo-img:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Love Sign Styling */
@@ -218,7 +210,7 @@ header {
 }
 
 .love-sign.loved {
-    color: darkred; /* Change color when liked */
+    color: darkred;
 }
 
 /* Title Styling */
@@ -259,6 +251,7 @@ header {
     background-color: #e50914;
     border: 1px solid #e50914;
 }
+
 /* Featured Photographer Section */
 .featured-photographer {
     padding: 20px;
@@ -279,7 +272,7 @@ header {
 
 #featured-image {
     width: 100%;
-    height: 300px; /* Adjust as needed */
+    height: 300px;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -299,4 +292,94 @@ header {
 
 .photographer-button:hover {
     background-color: #d40812;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero {
+        height: 400px;
+    }
+
+    .text-content h1 {
+        font-size: 36px;
+    }
+
+    .text-content p {
+        font-size: 16px;
+    }
+
+    .explore-button {
+        font-size: 14px;
+        width: auto;
+        padding: 8px 16px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .search-bar input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .search-button {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    #sort-button {
+        position: static;
+        margin-top: 20px;
+        width: 100%;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .carousel-container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 300px;
+    }
+
+    .text-content h1 {
+        font-size: 28px;
+    }
+
+    .text-content p {
+        font-size: 14px;
+    }
+
+    .explore-button {
+        font-size: 12px;
+        padding: 6px 12px;
+        width: auto;
+    }
+
+    .search-bar input[type="text"] {
+        font-size: 12px;
+    }
+
+    .search-button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    #sort-button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .photo-img {
+        height: 150px;
+    }
+
+    .featured-photographer h2 {
+        font-size: 20px;
+    }
 }

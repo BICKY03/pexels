@@ -149,4 +149,3 @@ searchButton.addEventListener('click', () => {
 
 // Initial fetch to populate similar products
 fetchPhotos('nature'); // Replace 'nature' with any default query
-
