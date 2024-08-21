@@ -60,7 +60,7 @@ const fetchPhotos = (query) => {
                     removeFromFavourites(photo.src.medium);
                 } else {
                     loveSign.classList.add('loved');
-                    addToFavourites(photo.src.medium);
+                    addToFavourites(photo);
                 }
             });
 
@@ -80,14 +80,14 @@ const fetchPhotos = (query) => {
 };
 
 // Function to add photo to favourites list
-const addToFavourites = (src) => {
+const addToFavourites = (photo) => {
     const existingImages = Array.from(favouritesList.querySelectorAll('img')).map(img => img.src);
-    if (!existingImages.includes(src)) {
+    if (!existingImages.includes(photo.src.medium)) {
         const li = document.createElement('li');
         li.className = 'splide__slide';
 
         const img = document.createElement('img');
-        img.src = src;
+        img.src = photo.src.medium;
         img.className = 'photo-img';
 
         const loveSign = document.createElement('span');
@@ -96,11 +96,16 @@ const addToFavourites = (src) => {
 
         loveSign.addEventListener('click', () => {
             loveSign.classList.remove('loved');
-            removeFromFavourites(src);
+            removeFromFavourites(photo.src.medium);
         });
+
+        const title = document.createElement('p');
+        title.className = 'photo-title';
+        title.textContent = photo.photographer; // Add photographer's name as title
 
         li.appendChild(img);
         li.appendChild(loveSign);
+        li.appendChild(title);
         favouritesList.appendChild(li);
 
         favouritesCarousel.refresh();
@@ -118,6 +123,25 @@ const removeFromFavourites = (src) => {
     favouritesCarousel.refresh();
 };
 
+// Function to sort favourites by title
+const sortFavouritesByTitle = () => {
+    const items = Array.from(favouritesList.querySelectorAll('li'));
+    items.sort((a, b) => {
+        const titleA = a.querySelector('.photo-title').textContent.toUpperCase();
+        const titleB = b.querySelector('.photo-title').textContent.toUpperCase();
+        return titleA.localeCompare(titleB);
+    });
+
+    // Clear existing list and append sorted items
+    favouritesList.innerHTML = '';
+    items.forEach(item => favouritesList.appendChild(item));
+
+    favouritesCarousel.refresh();
+};
+
+// Event listener for sort button
+document.getElementById('sort-button').addEventListener('click', sortFavouritesByTitle);
+
 // Event listener for search button
 searchButton.addEventListener('click', () => {
     fetchPhotos(searchInput.value);
@@ -125,3 +149,4 @@ searchButton.addEventListener('click', () => {
 
 // Initial fetch to populate similar products
 fetchPhotos('nature'); // Replace 'nature' with any default query
+
