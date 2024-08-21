@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plush Stock Photos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+</head>
+<body>
+    <header>
+        <div class="sale-banner">SUPER SALE UP TO 40% OFF</div>
+        <nav class="navbar">
+            <img src="img/Registered_Logo_PNG-02_4435x 1.png" alt="PLUSH Logo" class="logo">
+            <ul class="nav-links">
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Community</a></li>
+            </ul>
+            <div class="user-options">
+                <a href="#"><img src="img/Link ⏵ SVG.png" alt="User Icon" class="user-icon"></a>
+                <a href="#"><img src="img/Link ⏵ SVG (1).png" alt="Search Icon" class="user-icon"></a>
+                <a href="#"><img src="img/Link ⏵ SVG (2).png" alt="Cart Icon" class="cart-icon"></a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img src="img/Poster.png" alt="John Wick" class="hero-image">
+        <div class="overlay">
+            <div class="text-content">
+                <h1>Stock photos</h1>
+                <p>John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.</p>
+                <a href="#" class="explore-button">
+                    <img src="img/Icon.png" alt="Explore Icon" class="button-icon">
+                    EXPLORE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search for photos">
+        <button class="search-button" id="search-button">🔍</button>
+    </div>
+
+    <section class="featured-photographer">
+        <h2>Featured Photographer</h2>
+        <div id="featured-photographer">
+            <img id="featured-image" src="" alt="Featured Image">
+            <a id="photographer-link" href="#" target="_blank" class="photographer-button">View Photographer's Profile</a>
+        </div>
+    </section>
+
+    <section class="carousel-container">
+        <h2>Similar Products</h2>
+        <div id="similar-products-carousel" class="splide">
+            <div class="splide__track">
+                <ul class="splide__list" id="similar-products-list">
+                    <!-- Similar Products images will be inserted here by JavaScript -->
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="carousel-container">
+        <h2>Favourites List</h2>
+        <button id="sort-button">Sort by Title</button>
+        <div id="favourites-carousel" class="splide">
+            <div class="splide__track">
+                <ul class="splide__list" id="favourites-list">
+                    <!-- Favourites images will be inserted here by JavaScript -->
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
