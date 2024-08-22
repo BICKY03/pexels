@@ -18,7 +18,6 @@ const similarProductsCarousel = new Splide('#similar-products-carousel', {
 }).mount();
 
 const favouritesCarousel = new Splide('#favourites-carousel', {
-    // type       : 'loop',
     perPage    : 3,
     gap        : '10px',
     pagination : false,
@@ -108,6 +107,9 @@ const addToFavourites = (photo) => {
         li.appendChild(title);
         favouritesList.appendChild(li);
 
+        // Save to session storage
+        saveToSessionStorage(photo);
+
         favouritesCarousel.refresh();
     }
 };
@@ -118,10 +120,34 @@ const removeFromFavourites = (src) => {
     images.forEach(img => {
         if (img.src === src) {
             img.parentElement.remove();
+            removeFromSessionStorage(src);
         }
     });
     favouritesCarousel.refresh();
 };
+
+// Save favourites to session storage
+const saveToSessionStorage = (photo) => {
+    let favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
+    favourites.push(photo);
+    sessionStorage.setItem('favourites', JSON.stringify(favourites));
+};
+
+// Remove favourites from session storage
+const removeFromSessionStorage = (src) => {
+    let favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
+    favourites = favourites.filter(fav => fav.src.medium !== src);
+    sessionStorage.setItem('favourites', JSON.stringify(favourites));
+};
+
+// Load favourites from session storage
+const loadFavouritesFromSessionStorage = () => {
+    const favourites = JSON.parse(sessionStorage.getItem('favourites')) || [];
+    favourites.forEach(photo => addToFavourites(photo));
+};
+
+// Load favourites on page load
+window.addEventListener('load', loadFavouritesFromSessionStorage);
 
 // Function to sort favourites by title
 const sortFavouritesByTitle = () => {
@@ -149,3 +175,5 @@ searchButton.addEventListener('click', () => {
 
 // Initial fetch to populate similar products
 fetchPhotos('nature'); // Replace 'nature' with any default query
+
+
